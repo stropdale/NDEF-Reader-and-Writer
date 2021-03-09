@@ -98,19 +98,36 @@ extension CmdsViewController: NFCNDEFReaderSessionDelegate {
             
             let sramSize = 64
             let dataTx = NSMutableData(length: sramSize)!
+            
+            // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
             let led = "L1".data(using: .ascii)
+            let ledData = NSData(data: led!)
+            let ledBytes = ledData.bytes
+            dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
             
-            self.session?.alertMessage = "Sending command"
+            self.write(tag: tag, dataTx: dataTx)
             
-            led?.withUnsafeBytes {
-                dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: $0)
-                
-                
-                
-            }
             
-            // Write the ram block
             
         })
+    }
+    
+    private func write(tag: NFCNDEFTag, dataTx: NSMutableData) {
+        var charArray = [CUnsignedChar](repeating: 0, count: 3)
+        charArray[0] = 0xA6
+        charArray[1] = 0xF0
+        charArray[2] = 0xF0 + 0x0F
+        
+        var cmd = NSMutableData(bytes: charArray, length: charArray.count)
+        cmd.append(dataTx as Data)
+        
+        // Android app says the board is a NTAG_IC_2k_PLUS
+        
+        
+        // Try the fast write method
+        
+        
+        // If that doesnt work, then try the write method
+        
     }
 }
