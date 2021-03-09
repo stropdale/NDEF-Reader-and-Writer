@@ -118,16 +118,19 @@ extension CmdsViewController: NFCNDEFReaderSessionDelegate {
         charArray[1] = 0xF0
         charArray[2] = 0xF0 + 0x0F
         
-        var cmd = NSMutableData(bytes: charArray, length: charArray.count)
+        let cmd = NSMutableData(bytes: charArray, length: charArray.count)
         cmd.append(dataTx as Data)
+
         
-        // Android app says the board is a NTAG_IC_2k_PLUS
-        
-        
-        // Try the fast write method
-        
-        
-        // If that doesnt work, then try the write method
+        // TODO: Send the command
+        if let t = tag as? NFCMiFareTag {
+            t.sendMiFareCommand(commandPacket: cmd as Data) { (data, error) in
+                
+                
+                
+                
+            }
+        }
         
     }
 }
