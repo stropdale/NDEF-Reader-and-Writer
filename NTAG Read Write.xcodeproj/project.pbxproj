@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4282AA825F768F80015655F /* CmdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4282AA725F768F80015655F /* CmdsViewController.swift */; };
 		E4527F6025F61EC70008DE79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F5F25F61EC70008DE79 /* AppDelegate.swift */; };
 		E4527F6225F61EC70008DE79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F6125F61EC70008DE79 /* SceneDelegate.swift */; };
 		E4527F6425F61EC70008DE79 /* NDefReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F6325F61EC70008DE79 /* NDefReadViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4282AA725F768F80015655F /* CmdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmdsViewController.swift; sourceTree = "<group>"; };
 		E4527F5C25F61EC70008DE79 /* NTAG Read Write.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NTAG Read Write.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4527F5F25F61EC70008DE79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4527F6125F61EC70008DE79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				E4527F6125F61EC70008DE79 /* SceneDelegate.swift */,
 				E4527F6325F61EC70008DE79 /* NDefReadViewController.swift */,
 				E4527F7525F6207E0008DE79 /* NDefWriteViewController.swift */,
+				E4282AA725F768F80015655F /* CmdsViewController.swift */,
 				E4527F6525F61EC80008DE79 /* Main.storyboard */,
 				E4527F6825F61EC80008DE79 /* Assets.xcassets */,
 				E4527F6A25F61EC80008DE79 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 				E4527F6025F61EC70008DE79 /* AppDelegate.swift in Sources */,
 				E4527F6225F61EC70008DE79 /* SceneDelegate.swift in Sources */,
 				E4527F7625F6207E0008DE79 /* NDefWriteViewController.swift in Sources */,
+				E4282AA825F768F80015655F /* CmdsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

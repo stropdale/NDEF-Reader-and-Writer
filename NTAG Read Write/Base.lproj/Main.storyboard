@@ -39,11 +39,18 @@
                                 <action selector="readNDef:" destination="BYZ-38-t0r" id="osY-45-0eK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Write NDEF" id="kyj-0g-SI9">
-                            <connections>
-                                <segue destination="Xjj-DK-Rdf" kind="show" id="5of-am-mun"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Write NDEF" id="kyj-0g-SI9">
+                                <connections>
+                                    <segue destination="Xjj-DK-Rdf" kind="show" id="5of-am-mun"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Cmd" id="H5W-EY-Sew">
+                                <connections>
+                                    <segue destination="sCh-A1-VdV" kind="show" id="bNu-UL-IZ5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="resultsTextView" destination="Vdo-Hj-SEs" id="BbO-it-9Mz"/>
@@ -52,6 +59,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="93.75"/>
+        </scene>
+        <!--Cmds-->
+        <scene sceneID="SAU-vE-tlv">
+            <objects>
+                <viewController id="sCh-A1-VdV" customClass="CmdsViewController" customModule="NTAG_Read_Write" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i56-j5-rQU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="322-fN-gT6">
+                                <rect key="frame" x="16" y="104" width="30" height="30"/>
+                                <state key="normal" title="LED"/>
+                                <connections>
+                                    <action selector="led1ButtonTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="TaC-Fw-u0C"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="okF-wi-euB">
+                                <rect key="frame" x="20" y="662" width="374" height="200"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="vku-QM-mk8"/>
+                                    <constraint firstAttribute="height" constant="200" id="yhX-uy-x03"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v9a-5j-Fee"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="322-fN-gT6" firstAttribute="top" secondItem="v9a-5j-Fee" secondAttribute="top" constant="16" id="D1T-LE-WYT"/>
+                            <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="okF-wi-euB" secondAttribute="trailing" constant="20" id="DE6-mi-33t"/>
+                            <constraint firstItem="322-fN-gT6" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="EHh-Gl-TIn"/>
+                            <constraint firstItem="okF-wi-euB" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="20" id="Oip-na-lm0"/>
+                            <constraint firstItem="okF-wi-euB" firstAttribute="bottom" secondItem="v9a-5j-Fee" secondAttribute="bottom" id="Vzi-3H-HPo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cmds" id="anP-nM-2p6"/>
+                    <connections>
+                        <outlet property="infoTextView" destination="okF-wi-euB" id="ph1-TU-Wej"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eS-Ws-V9f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="-218"/>
         </scene>
         <!--Write-->
         <scene sceneID="JxO-wg-Zl5">
@@ -114,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64X-QC-6hW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936.2318840579712" y="-16.071428571428569"/>
+            <point key="canvasLocation" x="1845" y="422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BMV-3e-I3M">
