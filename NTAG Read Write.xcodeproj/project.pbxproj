@@ -15,6 +15,17 @@
 		E4527F6925F61EC80008DE79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4527F6825F61EC80008DE79 /* Assets.xcassets */; };
 		E4527F6C25F61EC80008DE79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4527F6A25F61EC80008DE79 /* LaunchScreen.storyboard */; };
 		E4527F7625F6207E0008DE79 /* NDefWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F7525F6207E0008DE79 /* NDefWriteViewController.swift */; };
+		E4C8273425F7C7CC002D37AA /* NTAG_I2C_LIB.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8271125F7C7CC002D37AA /* NTAG_I2C_LIB.m */; };
+		E4C8273525F7C7CC002D37AA /* NtagUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8271425F7C7CC002D37AA /* NtagUtils.m */; };
+		E4C8273625F7C7CC002D37AA /* TextRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8271C25F7C7CC002D37AA /* TextRecord.m */; };
+		E4C8273725F7C7CC002D37AA /* BTRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8271F25F7C7CC002D37AA /* BTRecord.m */; };
+		E4C8273825F7C7CC002D37AA /* SmartPosterRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8272325F7C7CC002D37AA /* SmartPosterRecord.m */; };
+		E4C8273925F7C7CC002D37AA /* UriRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8272525F7C7CC002D37AA /* UriRecord.m */; };
+		E4C8273A25F7C7CC002D37AA /* ExternalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8272A25F7C7CC002D37AA /* ExternalRecord.m */; };
+		E4C8273B25F7C7CC002D37AA /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8272B25F7C7CC002D37AA /* Record.m */; };
+		E4C8273C25F7C7CC002D37AA /* MIMERecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8272E25F7C7CC002D37AA /* MIMERecord.m */; };
+		E4C8273D25F7C7CC002D37AA /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8273025F7C7CC002D37AA /* Message.m */; };
+		E4C8273E25F7C7CC002D37AA /* Ntag_Get_Version.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8273225F7C7CC002D37AA /* Ntag_Get_Version.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +40,30 @@
 		E4527F6D25F61EC80008DE79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4527F7525F6207E0008DE79 /* NDefWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDefWriteViewController.swift; sourceTree = "<group>"; };
 		E4527F7A25F6218C0008DE79 /* NTAG Read Write.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NTAG Read Write.entitlements"; sourceTree = "<group>"; };
+		E4C8271025F7C7CB002D37AA /* NTAG Read Write-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NTAG Read Write-Bridging-Header.h"; sourceTree = "<group>"; };
+		E4C8271125F7C7CC002D37AA /* NTAG_I2C_LIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAG_I2C_LIB.m; sourceTree = "<group>"; };
+		E4C8271225F7C7CC002D37AA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E4C8271425F7C7CC002D37AA /* NtagUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NtagUtils.m; sourceTree = "<group>"; };
+		E4C8271525F7C7CC002D37AA /* NtagUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NtagUtils.h; sourceTree = "<group>"; };
+		E4C8271625F7C7CC002D37AA /* NTAG_I2C_LIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAG_I2C_LIB.h; sourceTree = "<group>"; };
+		E4C8271C25F7C7CC002D37AA /* TextRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextRecord.m; sourceTree = "<group>"; };
+		E4C8271D25F7C7CC002D37AA /* TextRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRecord.h; sourceTree = "<group>"; };
+		E4C8271F25F7C7CC002D37AA /* BTRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTRecord.m; sourceTree = "<group>"; };
+		E4C8272025F7C7CC002D37AA /* BTRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTRecord.h; sourceTree = "<group>"; };
+		E4C8272225F7C7CC002D37AA /* SmartPosterRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPosterRecord.h; sourceTree = "<group>"; };
+		E4C8272325F7C7CC002D37AA /* SmartPosterRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartPosterRecord.m; sourceTree = "<group>"; };
+		E4C8272525F7C7CC002D37AA /* UriRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UriRecord.m; sourceTree = "<group>"; };
+		E4C8272625F7C7CC002D37AA /* UriRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UriRecord.h; sourceTree = "<group>"; };
+		E4C8272725F7C7CC002D37AA /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		E4C8272925F7C7CC002D37AA /* ExternalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalRecord.h; sourceTree = "<group>"; };
+		E4C8272A25F7C7CC002D37AA /* ExternalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalRecord.m; sourceTree = "<group>"; };
+		E4C8272B25F7C7CC002D37AA /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		E4C8272D25F7C7CC002D37AA /* MIMERecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMERecord.h; sourceTree = "<group>"; };
+		E4C8272E25F7C7CC002D37AA /* MIMERecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMERecord.m; sourceTree = "<group>"; };
+		E4C8272F25F7C7CC002D37AA /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		E4C8273025F7C7CC002D37AA /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		E4C8273225F7C7CC002D37AA /* Ntag_Get_Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ntag_Get_Version.m; sourceTree = "<group>"; };
+		E4C8273325F7C7CC002D37AA /* Ntag_Get_Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ntag_Get_Version.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +96,7 @@
 		E4527F5E25F61EC70008DE79 /* NTAG Read Write */ = {
 			isa = PBXGroup;
 			children = (
+				E4C8270F25F7C7A2002D37AA /* Lib */,
 				E4527F7A25F6218C0008DE79 /* NTAG Read Write.entitlements */,
 				E4527F5F25F61EC70008DE79 /* AppDelegate.swift */,
 				E4527F6125F61EC70008DE79 /* SceneDelegate.swift */,
@@ -73,6 +109,133 @@
 				E4527F6D25F61EC80008DE79 /* Info.plist */,
 			);
 			path = "NTAG Read Write";
+			sourceTree = "<group>";
+		};
+		E4C8270F25F7C7A2002D37AA /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271225F7C7CC002D37AA /* Constants.h */,
+				E4C8271725F7C7CC002D37AA /* Models */,
+				E4C8271625F7C7CC002D37AA /* NTAG_I2C_LIB.h */,
+				E4C8271125F7C7CC002D37AA /* NTAG_I2C_LIB.m */,
+				E4C8271325F7C7CC002D37AA /* Utils */,
+				E4C8271025F7C7CB002D37AA /* NTAG Read Write-Bridging-Header.h */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		E4C8271325F7C7CC002D37AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271425F7C7CC002D37AA /* NtagUtils.m */,
+				E4C8271525F7C7CC002D37AA /* NtagUtils.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E4C8271725F7C7CC002D37AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271825F7C7CC002D37AA /* NDEF Message */,
+				E4C8273125F7C7CC002D37AA /* Ntag_Get_Version */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E4C8271825F7C7CC002D37AA /* NDEF Message */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271925F7C7CC002D37AA /* Record */,
+				E4C8272F25F7C7CC002D37AA /* Message.h */,
+				E4C8273025F7C7CC002D37AA /* Message.m */,
+			);
+			path = "NDEF Message";
+			sourceTree = "<group>";
+		};
+		E4C8271925F7C7CC002D37AA /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271A25F7C7CC002D37AA /* Well Known Record */,
+				E4C8272725F7C7CC002D37AA /* Record.h */,
+				E4C8272825F7C7CC002D37AA /* External Record */,
+				E4C8272B25F7C7CC002D37AA /* Record.m */,
+				E4C8272C25F7C7CC002D37AA /* MIME Record */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		E4C8271A25F7C7CC002D37AA /* Well Known Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271B25F7C7CC002D37AA /* Text Record */,
+				E4C8271E25F7C7CC002D37AA /* BT Record */,
+				E4C8272125F7C7CC002D37AA /* SmartPoster Record */,
+				E4C8272425F7C7CC002D37AA /* URI Record */,
+			);
+			path = "Well Known Record";
+			sourceTree = "<group>";
+		};
+		E4C8271B25F7C7CC002D37AA /* Text Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271C25F7C7CC002D37AA /* TextRecord.m */,
+				E4C8271D25F7C7CC002D37AA /* TextRecord.h */,
+			);
+			path = "Text Record";
+			sourceTree = "<group>";
+		};
+		E4C8271E25F7C7CC002D37AA /* BT Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8271F25F7C7CC002D37AA /* BTRecord.m */,
+				E4C8272025F7C7CC002D37AA /* BTRecord.h */,
+			);
+			path = "BT Record";
+			sourceTree = "<group>";
+		};
+		E4C8272125F7C7CC002D37AA /* SmartPoster Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8272225F7C7CC002D37AA /* SmartPosterRecord.h */,
+				E4C8272325F7C7CC002D37AA /* SmartPosterRecord.m */,
+			);
+			path = "SmartPoster Record";
+			sourceTree = "<group>";
+		};
+		E4C8272425F7C7CC002D37AA /* URI Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8272525F7C7CC002D37AA /* UriRecord.m */,
+				E4C8272625F7C7CC002D37AA /* UriRecord.h */,
+			);
+			path = "URI Record";
+			sourceTree = "<group>";
+		};
+		E4C8272825F7C7CC002D37AA /* External Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8272925F7C7CC002D37AA /* ExternalRecord.h */,
+				E4C8272A25F7C7CC002D37AA /* ExternalRecord.m */,
+			);
+			path = "External Record";
+			sourceTree = "<group>";
+		};
+		E4C8272C25F7C7CC002D37AA /* MIME Record */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8272D25F7C7CC002D37AA /* MIMERecord.h */,
+				E4C8272E25F7C7CC002D37AA /* MIMERecord.m */,
+			);
+			path = "MIME Record";
+			sourceTree = "<group>";
+		};
+		E4C8273125F7C7CC002D37AA /* Ntag_Get_Version */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8273225F7C7CC002D37AA /* Ntag_Get_Version.m */,
+				E4C8273325F7C7CC002D37AA /* Ntag_Get_Version.h */,
+			);
+			path = Ntag_Get_Version;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +269,7 @@
 				TargetAttributes = {
 					E4527F5B25F61EC70008DE79 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -145,11 +309,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C8273C25F7C7CC002D37AA /* MIMERecord.m in Sources */,
 				E4527F6425F61EC70008DE79 /* NDefReadViewController.swift in Sources */,
+				E4C8273725F7C7CC002D37AA /* BTRecord.m in Sources */,
+				E4C8273B25F7C7CC002D37AA /* Record.m in Sources */,
+				E4C8273525F7C7CC002D37AA /* NtagUtils.m in Sources */,
 				E4527F6025F61EC70008DE79 /* AppDelegate.swift in Sources */,
+				E4C8273625F7C7CC002D37AA /* TextRecord.m in Sources */,
+				E4C8273D25F7C7CC002D37AA /* Message.m in Sources */,
+				E4C8273A25F7C7CC002D37AA /* ExternalRecord.m in Sources */,
+				E4C8273425F7C7CC002D37AA /* NTAG_I2C_LIB.m in Sources */,
 				E4527F6225F61EC70008DE79 /* SceneDelegate.swift in Sources */,
+				E4C8273E25F7C7CC002D37AA /* Ntag_Get_Version.m in Sources */,
+				E4C8273825F7C7CC002D37AA /* SmartPosterRecord.m in Sources */,
 				E4527F7625F6207E0008DE79 /* NDefWriteViewController.swift in Sources */,
 				E4282AA825F768F80015655F /* CmdsViewController.swift in Sources */,
+				E4C8273925F7C7CC002D37AA /* UriRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NTAG Read Write/NTAG Read Write.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6ZBXMFUFJ7;
@@ -306,6 +482,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rgb.NTAG-Read-Write";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NTAG Read Write/Lib/NTAG Read Write-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -316,6 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NTAG Read Write/NTAG Read Write.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6ZBXMFUFJ7;
@@ -326,6 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rgb.NTAG-Read-Write";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NTAG Read Write/Lib/NTAG Read Write-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

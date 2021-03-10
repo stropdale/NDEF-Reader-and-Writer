@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import CoreNFC
+
+
+//import CoreNFC
 
 class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     var session: NFCTagReaderSession?
@@ -20,7 +22,33 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     }
     
     @IBAction func led1ButtonTapped(_ sender: Any) {
-        connect()
+//        NTAG_I2C_LIB.sharedInstance()?.initSession({ (nil) in
+//            self.connected()
+//        }, onFailure: { (error) in
+//            print("failed to get the session")
+//        })
+
+        connect() // MINE
+    }
+    
+    private func connected() {
+        guard let lib = NTAG_I2C_LIB.sharedInstance() else {
+            return
+        }
+        
+        if lib.isConnect() != 3 { // 3 is connected apparently
+            print("Not connected")
+            return
+        }
+
+        let sramSize = 64
+        let dataTx = NSMutableData(length: sramSize)!
+
+        // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
+        let led = "L1".data(using: .ascii)
+        let ledData = NSData(data: led!)
+        let ledBytes = ledData.bytes
+        dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
     }
     
     func connect() {
@@ -28,13 +56,13 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
         session?.begin()
     }
-    
+
     // MARK: - TagReaderSessionDelegate Methods
     func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
         //infoTextView.text = "Session did become active: \(session.description)"
         print("Session did become active: \(session.description)")
     }
-    
+
     func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
         let errorCode = (error as NSError).code
         if errorCode == 200 { return } // This is user terminating the read
@@ -43,14 +71,23 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
 //        infoTextView.textColor = .red
         session.invalidate()
     }
-    
+
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
         guard let tag = tags.first else {
             return
         }
         
+
         
-        
+        session.connect(to: tag) { (error) in
+            
+            
+            
+            print("Tag connected: \(tag.isAvailable)")
+        }
+
+
+
         
     }
     
