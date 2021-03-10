@@ -106,10 +106,20 @@
                                     <action selector="greenTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="gbv-9J-5qR"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tfk-3F-6lo">
+                                <rect key="frame" x="20" y="226" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHx-MI-uao">
+                                <rect key="frame" x="77" y="231" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="v9a-5j-Fee"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Tfk-3F-6lo" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="20" id="1kp-ww-39e"/>
                             <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="322-fN-gT6" secondAttribute="trailing" constant="9" id="3VF-CW-Bvq"/>
                             <constraint firstItem="322-fN-gT6" firstAttribute="top" secondItem="v9a-5j-Fee" secondAttribute="top" constant="16" id="D1T-LE-WYT"/>
                             <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="okF-wi-euB" secondAttribute="trailing" constant="20" id="DE6-mi-33t"/>
@@ -121,12 +131,16 @@
                             <constraint firstItem="Sea-Zh-h4M" firstAttribute="top" secondItem="322-fN-gT6" secondAttribute="bottom" constant="8" symbolic="YES" id="hFa-U4-x3G"/>
                             <constraint firstItem="Sea-Zh-h4M" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="kq5-bo-b9m"/>
                             <constraint firstItem="AOp-D9-8kh" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="l14-ey-Rs1"/>
+                            <constraint firstItem="IHx-MI-uao" firstAttribute="leading" secondItem="Tfk-3F-6lo" secondAttribute="trailing" constant="8" symbolic="YES" id="sQZ-IJ-gmw"/>
                             <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="Sea-Zh-h4M" secondAttribute="trailing" constant="8" id="svM-Js-bMj"/>
+                            <constraint firstItem="Tfk-3F-6lo" firstAttribute="top" secondItem="AOp-D9-8kh" secondAttribute="bottom" constant="16" id="woF-9V-bXV"/>
+                            <constraint firstItem="IHx-MI-uao" firstAttribute="centerY" secondItem="Tfk-3F-6lo" secondAttribute="centerY" id="x30-Rv-bQd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cmds" id="anP-nM-2p6"/>
                     <connections>
                         <outlet property="infoTextView" destination="okF-wi-euB" id="ph1-TU-Wej"/>
+                        <outlet property="temperatureSwitch" destination="Tfk-3F-6lo" id="WDs-Mk-3Bn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eS-Ws-V9f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

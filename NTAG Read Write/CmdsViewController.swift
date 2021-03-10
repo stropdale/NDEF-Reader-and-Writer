@@ -12,10 +12,10 @@ import UIKit
 
 class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     var ledCommand: String?
-    
     var session: NFCTagReaderSession?
-    @IBOutlet weak var infoTextView: UITextView!
     
+    @IBOutlet weak var temperatureSwitch: UISwitch!
+    @IBOutlet weak var infoTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         ledCommand = "L3"
         connect()
     }
+    
+
     
     func connect() {
         //let concurrentQueue = DispatchQueue(label: "tagScan", attributes: .concurrent)
@@ -73,9 +75,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
                 
                 DispatchQueue.main.async {
                     self.printTagDescription(tag: tag)
+                    self.sendCmd(tag: tag)
                 }
-                
-                self.sendCmd(tag: tag)
             }
         }  
     }
@@ -88,12 +89,25 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         let sramSize = 64
         let dataTx = NSMutableData(length: sramSize)!
         
-        // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
+        // The switches
         let ledData = led.data(using: .ascii)
         let ledNSData = NSData(data: ledData!)
-        let ledBytes = ledNSData.bytes
-        dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
+        let b = ledNSData.bytes
+        dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: b)
         
+        // The on value to be written to turn on various bits of functionality
+        let tData = "E".data(using: .ascii)
+        let tNSData = NSData(data: tData!)
+        let tb = tNSData.bytes
+        
+        // Temperature
+        if temperatureSwitch.isOn {
+            dataTx.replaceBytes(in: NSMakeRange(sramSize - 9, 1), withBytes: tb)
+        }
+        
+        // Turn on the display
+        dataTx.replaceBytes(in: NSMakeRange(sramSize - 10, 1), withBytes: tb)
+                
         write(tag: tag, dataTx: dataTx)
     }
     
@@ -110,6 +124,10 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
             if let error = error {
                 print(error.localizedDescription)
             }
+            
+            // How do we keep the connection alive. Continue polling?
+            
+            // Wait 100ms. Do a read of the memory.
         }
     }
     
