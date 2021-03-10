@@ -84,7 +84,6 @@
                                 </state>
                                 <connections>
                                     <action selector="blueTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="KhD-cZ-2LZ"/>
-                                    <action selector="orangeTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="Yu7-KD-RaC"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="okF-wi-euB">
@@ -105,7 +104,6 @@
                                 </state>
                                 <connections>
                                     <action selector="greenTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="gbv-9J-5qR"/>
-                                    <action selector="orangeTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="f7b-Yz-Vbp"/>
                                 </connections>
                             </button>
                         </subviews>
