@@ -22,12 +22,6 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     }
     
     @IBAction func led1ButtonTapped(_ sender: Any) {
-        //        NTAG_I2C_LIB.sharedInstance()?.initSession({ (nil) in
-        //            self.connected()
-        //        }, onFailure: { (error) in
-        //            print("failed to get the session")
-        //        })
-        
         connect() // MINE
     }
     
@@ -100,7 +94,7 @@ Tag detected.
 
 MIFARE Tag Identifier: \(tag.identifier)
 MIFARE Tag Family: \(tag.mifareFamily)
-MIFARE Tag Historial Bytes: \(tag.historicalBytes)
+MIFARE Tag Historial Bytes: \(tag.historicalBytes?.count ?? 0)
 MIFARE Tag Type: \(tag.type)
 MIFARE Tag description: \(tag.description)
 """
