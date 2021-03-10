@@ -11,6 +11,8 @@ import UIKit
 //import CoreNFC
 
 class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
+    var ledCommand: String?
+    
     var session: NFCTagReaderSession?
     @IBOutlet weak var infoTextView: UITextView!
     
@@ -21,28 +23,19 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func led1ButtonTapped(_ sender: Any) {
-        connect() // MINE
+    @IBAction func orangeTapped(_ sender: Any) {
+        ledCommand = "L1"
+        connect()
     }
     
-    private func connected() {
-        guard let lib = NTAG_I2C_LIB.sharedInstance() else {
-            return
-        }
-        
-        if lib.isConnect() != 3 { // 3 is connected apparently
-            print("Not connected")
-            return
-        }
-        
-        let sramSize = 64
-        let dataTx = NSMutableData(length: sramSize)!
-        
-        // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
-        let led = "L1".data(using: .ascii)
-        let ledData = NSData(data: led!)
-        let ledBytes = ledData.bytes
-        dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
+    @IBAction func blueTapped(_ sender: Any) {
+        ledCommand = "L2"
+        connect()
+    }
+    
+    @IBAction func greenTapped(_ sender: Any) {
+        ledCommand = "L3"
+        connect()
     }
     
     func connect() {
@@ -82,9 +75,42 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
                     self.printTagDescription(tag: tag)
                 }
                 
-                sendCmd(tag: tag)
+                self.sendCmd(tag: tag)
             }
         }  
+    }
+    
+    private func sendCmd(tag: NFCMiFareTag) {
+        guard let led = ledCommand else {
+            return
+        }
+        
+        let sramSize = 64
+        let dataTx = NSMutableData(length: sramSize)!
+        
+        // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
+        let ledData = led.data(using: .ascii)
+        let ledNSData = NSData(data: ledData!)
+        let ledBytes = ledNSData.bytes
+        dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
+        
+        write(tag: tag, dataTx: dataTx)
+    }
+    
+    private func write(tag: NFCMiFareTag, dataTx: NSMutableData) {
+        var charArray = [CUnsignedChar](repeating: 0, count: 3)
+        charArray[0] = 0xA6
+        charArray[1] = 0xF0
+        charArray[2] = 0xF0 + 0x0F
+        
+        let cmd = NSMutableData(bytes: charArray, length: charArray.count)
+        cmd.append(dataTx as Data)
+        
+        tag.sendMiFareCommand(commandPacket: cmd as Data) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func printTagDescription(tag: NFCMiFareTag) {
@@ -100,34 +126,5 @@ MIFARE Tag description: \(tag.description)
 """
         print(info)
         infoTextView.text = info
-    }
-}
-
-private func sendCmd(tag: NFCMiFareTag) {
-    let sramSize = 64
-    let dataTx = NSMutableData(length: sramSize)!
-    
-    // TODO: Should do the foloowing in swift, but I cant work out the new API here. Drop in to NS
-    let led = "L1".data(using: .ascii)
-    let ledData = NSData(data: led!)
-    let ledBytes = ledData.bytes
-    dataTx.replaceBytes(in: NSMakeRange(sramSize - 4, 2), withBytes: ledBytes)
-    
-    write(tag: tag, dataTx: dataTx)
-}
-
-private func write(tag: NFCMiFareTag, dataTx: NSMutableData) {
-    var charArray = [CUnsignedChar](repeating: 0, count: 3)
-    charArray[0] = 0xA6
-    charArray[1] = 0xF0
-    charArray[2] = 0xF0 + 0x0F
-    
-    let cmd = NSMutableData(bytes: charArray, length: charArray.count)
-    cmd.append(dataTx as Data)
-    
-    tag.sendMiFareCommand(commandPacket: cmd as Data) { (data, error) in
-        if let error = error {
-            print(error.localizedDescription)
-        }
     }
 }

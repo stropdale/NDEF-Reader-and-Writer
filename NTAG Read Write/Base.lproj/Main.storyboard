@@ -69,10 +69,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="322-fN-gT6">
-                                <rect key="frame" x="16" y="104" width="30" height="30"/>
-                                <state key="normal" title="LED"/>
+                                <rect key="frame" x="16" y="104" width="389" height="30"/>
+                                <state key="normal" title="LED">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                                 <connections>
-                                    <action selector="led1ButtonTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="TaC-Fw-u0C"/>
+                                    <action selector="orangeTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="TaC-Fw-u0C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-Zh-h4M">
+                                <rect key="frame" x="16" y="142" width="390" height="30"/>
+                                <state key="normal" title="LED">
+                                    <color key="titleColor" systemColor="systemTealColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="blueTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="KhD-cZ-2LZ"/>
+                                    <action selector="orangeTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="Yu7-KD-RaC"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="okF-wi-euB">
@@ -86,15 +98,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOp-D9-8kh">
+                                <rect key="frame" x="16" y="180" width="390" height="30"/>
+                                <state key="normal" title="LED">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="greenTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="gbv-9J-5qR"/>
+                                    <action selector="orangeTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="f7b-Yz-Vbp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="v9a-5j-Fee"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="322-fN-gT6" secondAttribute="trailing" constant="9" id="3VF-CW-Bvq"/>
                             <constraint firstItem="322-fN-gT6" firstAttribute="top" secondItem="v9a-5j-Fee" secondAttribute="top" constant="16" id="D1T-LE-WYT"/>
                             <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="okF-wi-euB" secondAttribute="trailing" constant="20" id="DE6-mi-33t"/>
                             <constraint firstItem="322-fN-gT6" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="EHh-Gl-TIn"/>
                             <constraint firstItem="okF-wi-euB" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="20" id="Oip-na-lm0"/>
+                            <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="AOp-D9-8kh" secondAttribute="trailing" constant="8" id="TAf-67-5m7"/>
                             <constraint firstItem="okF-wi-euB" firstAttribute="bottom" secondItem="v9a-5j-Fee" secondAttribute="bottom" id="Vzi-3H-HPo"/>
+                            <constraint firstItem="AOp-D9-8kh" firstAttribute="top" secondItem="Sea-Zh-h4M" secondAttribute="bottom" constant="8" symbolic="YES" id="czB-C2-EI5"/>
+                            <constraint firstItem="Sea-Zh-h4M" firstAttribute="top" secondItem="322-fN-gT6" secondAttribute="bottom" constant="8" symbolic="YES" id="hFa-U4-x3G"/>
+                            <constraint firstItem="Sea-Zh-h4M" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="kq5-bo-b9m"/>
+                            <constraint firstItem="AOp-D9-8kh" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="l14-ey-Rs1"/>
+                            <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="Sea-Zh-h4M" secondAttribute="trailing" constant="8" id="svM-Js-bMj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cmds" id="anP-nM-2p6"/>
@@ -197,6 +226,15 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
