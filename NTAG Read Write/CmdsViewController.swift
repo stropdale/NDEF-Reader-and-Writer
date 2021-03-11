@@ -114,8 +114,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     private func write(tag: NFCMiFareTag, dataTx: NSMutableData) {
         var charArray = [CUnsignedChar](repeating: 0, count: 3)
         charArray[0] = 0xA6
-        charArray[1] = 0xF0
-        charArray[2] = 0xF0 + 0x0F
+        charArray[1] = 0xF0 // Start
+        charArray[2] = 0xF0 + 0x0F // End
         
         let cmd = NSMutableData(bytes: charArray, length: charArray.count)
         cmd.append(dataTx as Data)
@@ -125,9 +125,28 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
                 print(error.localizedDescription)
             }
             
-            // How do we keep the connection alive. Continue polling?
-            
             // Wait 100ms. Do a read of the memory.
+            // This is what the iOS and Android apps do
+            // May not be nessesary
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.read(tag: tag)
+            }
+        }
+    }
+    
+    private func read(tag: NFCMiFareTag) {
+        var charArray = [CUnsignedChar](repeating: 0, count: 3)
+        charArray[0] = 0x3A
+        charArray[1] = 0xF0 // Start
+        charArray[2] = 0xFF // End
+        
+        let cmd = NSMutableData(bytes: charArray, length: charArray.count)
+        tag.sendMiFareCommand(commandPacket: cmd as Data) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            print("Data Size: \(data.count)")
         }
     }
     
