@@ -13,6 +13,7 @@ import UIKit
 class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     var ledCommand: String?
     var session: NFCTagReaderSession?
+    let sramSize = 64
     
     @IBOutlet weak var temperatureSwitch: UISwitch!
     @IBOutlet weak var infoTextView: UITextView!
@@ -86,7 +87,6 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
             return
         }
         
-        let sramSize = 64
         let dataTx = NSMutableData(length: sramSize)!
         
         // The switches
@@ -146,7 +146,14 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
                 print(error.localizedDescription)
             }
             
-            print("Data Size: \(data.count)")
+            self.parseData(data: data)
+        }
+    }
+    
+    private func parseData(data: Data) {
+        DispatchQueue.main.async {
+            let parser = DataParser()
+            parser.update(data, isTempEnabled: self.temperatureSwitch.isOn)
         }
     }
     

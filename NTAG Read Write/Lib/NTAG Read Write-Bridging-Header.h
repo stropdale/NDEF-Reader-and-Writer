@@ -3,3 +3,4 @@
 //
 
 #import "NTAG_I2C_LIB.h"
+#import "DataParser.h"

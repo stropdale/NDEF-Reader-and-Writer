@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E4282AA825F768F80015655F /* CmdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4282AA725F768F80015655F /* CmdsViewController.swift */; };
+		E446761625FA224B0008F5DF /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E446761525FA224B0008F5DF /* DataParser.m */; };
 		E4527F6025F61EC70008DE79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F5F25F61EC70008DE79 /* AppDelegate.swift */; };
 		E4527F6225F61EC70008DE79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F6125F61EC70008DE79 /* SceneDelegate.swift */; };
 		E4527F6425F61EC70008DE79 /* NDefReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4527F6325F61EC70008DE79 /* NDefReadViewController.swift */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		E4282AA725F768F80015655F /* CmdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmdsViewController.swift; sourceTree = "<group>"; };
+		E446761425FA224B0008F5DF /* DataParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
+		E446761525FA224B0008F5DF /* DataParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
 		E4527F5C25F61EC70008DE79 /* NTAG Read Write.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NTAG Read Write.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4527F5F25F61EC70008DE79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4527F6125F61EC70008DE79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 			children = (
 				E4C8271425F7C7CC002D37AA /* NtagUtils.m */,
 				E4C8271525F7C7CC002D37AA /* NtagUtils.h */,
+				E446761425FA224B0008F5DF /* DataParser.h */,
+				E446761525FA224B0008F5DF /* DataParser.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				E4527F6025F61EC70008DE79 /* AppDelegate.swift in Sources */,
 				E4C8273625F7C7CC002D37AA /* TextRecord.m in Sources */,
 				E4C8273D25F7C7CC002D37AA /* Message.m in Sources */,
+				E446761625FA224B0008F5DF /* DataParser.m in Sources */,
 				E4C8273A25F7C7CC002D37AA /* ExternalRecord.m in Sources */,
 				E4C8273425F7C7CC002D37AA /* NTAG_I2C_LIB.m in Sources */,
 				E4527F6225F61EC70008DE79 /* SceneDelegate.swift in Sources */,
