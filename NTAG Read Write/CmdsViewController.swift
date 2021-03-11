@@ -153,7 +153,12 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     private func parseData(data: Data) {
         DispatchQueue.main.async {
             let parser = DataParser()
-            parser.update(data, isTempEnabled: self.temperatureSwitch.isOn)
+            let result = parser.update(data, isTempEnabled: self.temperatureSwitch.isOn)
+            
+            var t = self.infoTextView.text
+            t!.append(result)
+            
+            self.infoTextView.text = t            
         }
     }
     

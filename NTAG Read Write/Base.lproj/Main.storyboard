@@ -86,13 +86,9 @@
                                     <action selector="blueTapped:" destination="sCh-A1-VdV" eventType="touchUpInside" id="KhD-cZ-2LZ"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="okF-wi-euB">
-                                <rect key="frame" x="20" y="662" width="374" height="200"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="okF-wi-euB">
+                                <rect key="frame" x="20" y="277" width="374" height="585"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="vku-QM-mk8"/>
-                                    <constraint firstAttribute="height" constant="200" id="yhX-uy-x03"/>
-                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -132,6 +128,7 @@
                             <constraint firstItem="Sea-Zh-h4M" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="kq5-bo-b9m"/>
                             <constraint firstItem="AOp-D9-8kh" firstAttribute="leading" secondItem="v9a-5j-Fee" secondAttribute="leading" constant="16" id="l14-ey-Rs1"/>
                             <constraint firstItem="IHx-MI-uao" firstAttribute="leading" secondItem="Tfk-3F-6lo" secondAttribute="trailing" constant="8" symbolic="YES" id="sQZ-IJ-gmw"/>
+                            <constraint firstItem="okF-wi-euB" firstAttribute="top" secondItem="Tfk-3F-6lo" secondAttribute="bottom" constant="20" id="srv-P6-OGk"/>
                             <constraint firstItem="v9a-5j-Fee" firstAttribute="trailing" secondItem="Sea-Zh-h4M" secondAttribute="trailing" constant="8" id="svM-Js-bMj"/>
                             <constraint firstItem="Tfk-3F-6lo" firstAttribute="top" secondItem="AOp-D9-8kh" secondAttribute="bottom" constant="16" id="woF-9V-bXV"/>
                             <constraint firstItem="IHx-MI-uao" firstAttribute="centerY" secondItem="Tfk-3F-6lo" secondAttribute="centerY" id="x30-Rv-bQd"/>
@@ -145,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eS-Ws-V9f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-218"/>
+            <point key="canvasLocation" x="1853.6231884057972" y="-218.30357142857142"/>
         </scene>
         <!--Write-->
         <scene sceneID="JxO-wg-Zl5">

@@ -9,9 +9,9 @@
 
 @implementation DataParser
 
-- (void) updateData: (NSData *) data isTempEnabled: (bool) isTempEnabled {
+- (NSString *) updateData: (NSData *) data isTempEnabled: (bool) isTempEnabled {
     if(data.length != 64)
-        return;
+        return @"Data was an odd length";
     
     // Processing Temperature Data
     int Temp = 0;
@@ -28,16 +28,27 @@
     
     Voltage = ((voltageFirstByte[0] << 8) & 0xFF00) + (voltageSecondByte[0] & 0x00FF);
     
+    
+    
+    NSMutableString *returnString = [[NSMutableString alloc] initWithString:@"Results:\n"];
+    NSString *voltage = [NSString stringWithFormat:@"Voltage is %f",[self calcVoltage:Voltage]];
+    [returnString appendString:voltage];
+    
     // If Temp = 0, there is no Temperature sensor
-    if (Temp != 0){} else {}
+    if (Temp == 0){
+        [returnString appendString:@"\nNo temperature sensor"];
+        return returnString;
+    }
     
     if (isTempEnabled){
-        NSLog(@"Temp is %f C", [self calcTempCelsius:Temp]);
-        NSLog(@"Temp is %f F", [self calcTempFarenheit:Temp]);
+        NSString *cel = [NSString stringWithFormat:@"\nTemp is %f C", [self calcTempCelsius:Temp]];
+        [returnString appendString:cel];
+        
+        NSString *far = [NSString stringWithFormat:@"\nTemp is %f F", [self calcTempFarenheit:Temp]];
+        [returnString appendString:far];
     }
-    else {
-        NSLog(@"Temp is %f F",[self calcVoltage:Voltage]);
-    }
+    
+    return returnString;
 }
 
 #pragma mark - calc Temp Celsius

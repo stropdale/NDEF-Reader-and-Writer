@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DataParser : NSObject
 
-- (void) updateData: (NSData *) data isTempEnabled: (bool) isTempEnabled;
+- (NSString *) updateData: (NSData *) data
+            isTempEnabled: (bool) isTempEnabled;
 
 @end
 
