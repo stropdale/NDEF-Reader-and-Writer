@@ -39,8 +39,6 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         connect()
     }
     
-
-    
     func connect() {
         //let concurrentQueue = DispatchQueue(label: "tagScan", attributes: .concurrent)
         session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
@@ -49,7 +47,10 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     // MARK: - TagReaderSessionDelegate Methods
     func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
-        //infoTextView.text = "Session did become active: \(session.description)"
+        DispatchQueue.main.async {
+            self.infoTextView.text = "Session did become active: \(session.description)"
+        }
+        
         print("Session did become active: \(session.description)")
     }
     
@@ -70,7 +71,10 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         if case let NFCTag.miFare(tag) = tag {
             session.connect(to: tags.first!) { (error) in
                 if let error = error {
-                    self.infoTextView.text = error.localizedDescription
+                    DispatchQueue.main.async {
+                        self.infoTextView.text = error.localizedDescription
+                    }
+                    
                     return
                 }
                 
@@ -163,11 +167,11 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     }
     
     private func printTagDescription(tag: NFCMiFareTag) {
-        
+        let uid = tag.identifier.map{ String(format: "%2hhx", $0) }.joined()
         let info = """
 Tag detected.
 
-MIFARE Tag Identifier: \(tag.identifier)
+MIFARE Tag Identifier: \(uid)
 MIFARE Tag Family: \(tag.mifareFamily)
 MIFARE Tag Historial Bytes: \(tag.historicalBytes?.count ?? 0)
 MIFARE Tag Type: \(tag.type)
