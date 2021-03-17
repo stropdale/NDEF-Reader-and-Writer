@@ -46,23 +46,30 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     // MARK: - TagReaderSessionDelegate Methods
     func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
-        DispatchQueue.main.async {
-            self.infoTextView.text = "Session did become active: \(session.description)"
-        }
-        
-        print("Session did become active: \(session.description)")
+        self.log(message: "Session did become active: \(session.description)", isError: false)
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
         let errorCode = (error as NSError).code
         if errorCode == 200 { return } // This is user terminating the read
+        if errorCode == 201 {
+            log(message: "Session timed out", isError: false)
+            return } // Timed out
         
-        infoTextView.text = infoTextView.text.appending("\n\n ** ERROR ** \(error.localizedDescription)")
-        infoTextView.textColor = .red
+        log(message: "\n ** ERROR ** \(error.localizedDescription)", isError: true)
         session.invalidate()
+        
+        log(message: "Will restart polling...", isError: false)
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1, execute: {
+            session.restartPolling()
+            self.log(message: "Restarting polling", isError: false)
+        })
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+        print("Tag found")
+        
+        
         guard let tag = tags.first else {
             return
         }
@@ -70,17 +77,18 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         if case let NFCTag.miFare(tag) = tag {
             session.connect(to: tags.first!) { (error) in
                 if let error = error {
-                    DispatchQueue.main.async {
-                        self.infoTextView.text = error.localizedDescription
-                    }
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 1, execute: {
+                        session.restartPolling()
+                        self.log(message: "Restarting polling", isError: false)
+                    })
+                    
+                    self.log(message: "Error connecting to tag (will restart session): \(error.localizedDescription)", isError: true)
                     
                     return
                 }
                 
-                DispatchQueue.main.async {
-                    self.printTagDescription(tag: tag)
-                    self.sendCmd(tag: tag)
-                }
+                self.printTagDescription(tag: tag)
+                self.sendCmd(tag: tag)
             }
         }  
     }
@@ -90,7 +98,7 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
             return
         }
         
-        self.infoTextView.text = self.infoTextView.text.appending("\n\n Sending command...")
+        log(message: "\n Sending command...", isError: false)
         
         let dataTx = NSMutableData(length: sramSize)!
         
@@ -106,14 +114,14 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         let tb = tNSData.bytes
         
         // Temperature
-        if temperatureSwitch.isOn {
-            dataTx.replaceBytes(in: NSMakeRange(sramSize - 9, 1), withBytes: tb)
+        DispatchQueue.main.async {
+            if self.temperatureSwitch.isOn {
+                dataTx.replaceBytes(in: NSMakeRange(self.sramSize - 9, 1), withBytes: tb)
+            }
+            
+            dataTx.replaceBytes(in: NSMakeRange(self.sramSize - 10, 1), withBytes: tb)
+            self.write(tag: tag, dataTx: dataTx)
         }
-        
-        // Turn on the display
-        dataTx.replaceBytes(in: NSMakeRange(sramSize - 10, 1), withBytes: tb)
-                
-        write(tag: tag, dataTx: dataTx)
     }
     
     private func write(tag: NFCMiFareTag, dataTx: NSMutableData) {
@@ -129,7 +137,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
             if let error = error {
                 print(error.localizedDescription)
                 
-                self.infoTextView.text = self.infoTextView.text.appending("\n\n Error sending command: \(error.localizedDescription)")
+                self.log(message: "Error sending command: \(error.localizedDescription)",
+                         isError: true)
             }
             
             // Wait 100ms. Do a read of the memory.
@@ -162,17 +171,14 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
             let parser = DataParser()
             let result = parser.update(data, isTempEnabled: self.temperatureSwitch.isOn)
             
-            var t = self.infoTextView.text
-            t!.append(result)
-            
-            self.infoTextView.text = t            
+            self.log(message: result, isError: false)
         }
     }
     
     private func printTagDescription(tag: NFCMiFareTag) {
         let uid = tag.identifier.map{ String(format: "%2hhx", $0) }.joined()
         let info = """
-Tag detected.
+Tag details...
 
 MIFARE Tag Identifier: \(uid)
 MIFARE Tag Family: \(tag.mifareFamily)
@@ -180,7 +186,18 @@ MIFARE Tag Historial Bytes: \(tag.historicalBytes?.count ?? 0)
 MIFARE Tag Type: \(tag.type)
 MIFARE Tag description: \(tag.description)
 """
-        print(info)
-        infoTextView.text = info
+        log(message: info, isError: false)
+    }
+    
+    private func log(message: String, isError: Bool) {
+        print(message)
+        
+        DispatchQueue.main.async {
+            self.infoTextView.text = self.infoTextView.text.appending("\n\(message)")
+            
+            if isError {
+                self.infoTextView.textColor = .red
+            }
+        }
     }
 }
