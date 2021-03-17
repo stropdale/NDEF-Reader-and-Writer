@@ -40,7 +40,6 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
     }
     
     func connect() {
-        //let concurrentQueue = DispatchQueue(label: "tagScan", attributes: .concurrent)
         session = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
         session?.begin()
     }
@@ -58,8 +57,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         let errorCode = (error as NSError).code
         if errorCode == 200 { return } // This is user terminating the read
         
-        //        infoTextView.text = error.localizedDescription
-        //        infoTextView.textColor = .red
+        infoTextView.text = infoTextView.text.appending("\n\n ** ERROR ** \(error.localizedDescription)")
+        infoTextView.textColor = .red
         session.invalidate()
     }
     
@@ -90,6 +89,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         guard let led = ledCommand else {
             return
         }
+        
+        self.infoTextView.text = self.infoTextView.text.appending("\n\n Sending command...")
         
         let dataTx = NSMutableData(length: sramSize)!
         
@@ -127,6 +128,8 @@ class CmdsViewController: UIViewController, NFCTagReaderSessionDelegate {
         tag.sendMiFareCommand(commandPacket: cmd as Data) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
+                
+                self.infoTextView.text = self.infoTextView.text.appending("\n\n Error sending command: \(error.localizedDescription)")
             }
             
             // Wait 100ms. Do a read of the memory.

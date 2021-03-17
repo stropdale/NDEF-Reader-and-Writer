@@ -11,7 +11,7 @@
 
 - (NSString *) updateData: (NSData *) data isTempEnabled: (bool) isTempEnabled {
     if(data.length != 64)
-        return @"Data was an odd length";
+        return @"\n Data was returned, but data was an odd length. Dont know what to do with it.";
     
     // Processing Temperature Data
     int Temp = 0;
